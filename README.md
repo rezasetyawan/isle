@@ -152,7 +152,7 @@ your windows uncovered.
 1. Run this in a terminal:
 
    ```sh
-   curl -fsSL https://raw.githubusercontent.com/zickrian/isle/main/get.sh | bash
+   curl -fsSL https://raw.githubusercontent.com/rezasetyawan/isle/main/get.sh | bash
    ```
 
 2. **Log out and back in**: GNOME Shell on Wayland only loads a new
@@ -196,7 +196,7 @@ one-line install above:
 
 ```sh
 sudo pacman -S --needed base-devel git
-git clone --depth 1 https://github.com/zickrian/isle.git
+git clone --depth 1 https://github.com/rezasetyawan/isle.git
 cd isle/packaging/aur
 makepkg -si
 # Log out and back in, then:
@@ -235,7 +235,7 @@ the GPU the Vulkan headers and glslc:
 sudo apt install git build-essential pkg-config libgtk-4-dev cmake libclang-dev libvulkan-dev glslc
 # Fedora: git gcc-c++ pkgconf gtk4-devel cmake clang-devel vulkan-loader-devel glslc
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-git clone https://github.com/zickrian/isle.git
+git clone https://github.com/rezasetyawan/isle.git
 cd isle
 ./install.sh
 ```

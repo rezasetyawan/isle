@@ -62,7 +62,7 @@ build_deb() {
     cat > "$root/usr/share/doc/isle/copyright" <<EOF
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Isle
-Source: https://github.com/zickrian/isle
+Source: https://github.com/rezasetyawan/isle
 
 Files: *
 Copyright: Isle contributors
@@ -91,7 +91,7 @@ Depends: $depends, gnome-shell (>= 46), dbus-user-session | default-dbus-session
 Recommends: libvulkan1
 Section: gnome
 Priority: optional
-Homepage: https://github.com/zickrian/isle
+Homepage: https://github.com/rezasetyawan/isle
 Description: $SUMMARY
  Isle turns the middle of the GNOME Shell top bar into a notch-style island: music
  with synced lyrics, calls, a focus timer, reminders, a calendar, a file shelf,
@@ -115,7 +115,7 @@ Version: ${VERSION//-/\~}
 Release: 1
 Summary: $SUMMARY
 License: GPL-3.0-or-later AND OFL-1.1
-URL: https://github.com/zickrian/isle
+URL: https://github.com/rezasetyawan/isle
 Packager: $MAINTAINER
 Requires: gnome-shell >= 46
 # Speech recognition on the graphics card; without it, on the processor.

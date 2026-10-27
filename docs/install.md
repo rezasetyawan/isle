@@ -34,7 +34,7 @@ programs.
 Paste this into a terminal and press Enter:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/zickrian/isle/main/get.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rezasetyawan/isle/main/get.sh | bash
 ```
 
 It downloads the latest release, checks its checksum and installs it for
@@ -111,11 +111,11 @@ Your tasks, calendar events, clipboard history and settings stay.
 press Enter, then log out and back in:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/zickrian/isle/main/get.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rezasetyawan/isle/main/get.sh | bash
 ```
 
 **Installed from a package?** Update it the way you installed it: download
-the new `.deb` or `.rpm` from [Releases](https://github.com/zickrian/isle/releases/latest)
+the new `.deb` or `.rpm` from [Releases](https://github.com/rezasetyawan/isle/releases/latest)
 and open it, or on Arch run `git pull` and `makepkg -si` again in
 `packaging/aur`. Then log out and back in. Don't also run the command above: it would add a second copy (see
 [below](#both-a-package-and-the-one-line-install)).
@@ -143,7 +143,7 @@ A system-wide package is removed as [below](#both-a-package-and-the-one-line-ins
 ## Without internet on the computer
 
 Download `isle-<version>-x86_64-linux.tar.gz` from
-[Releases](https://github.com/zickrian/isle/releases) on another computer,
+[Releases](https://github.com/rezasetyawan/isle/releases) on another computer,
 copy it over, then:
 
 ```sh
@@ -156,7 +156,7 @@ cd isle-*-x86_64-linux
 
 ### Ubuntu and Debian (.deb), Fedora (.rpm)
 
-Each [release](https://github.com/zickrian/isle/releases) also has
+Each [release](https://github.com/rezasetyawan/isle/releases) also has
 system-wide packages, installed for every user of the computer with the
 system's package manager (so they update and uninstall with it):
 
@@ -186,7 +186,7 @@ the one-line install (step 2), or build the `isle-bin` package from the `PKGBUIL
 
 ```sh
 sudo pacman -S --needed base-devel git
-git clone --depth 1 https://github.com/zickrian/isle.git
+git clone --depth 1 https://github.com/rezasetyawan/isle.git
 cd isle/packaging/aur
 makepkg -si
 # Log out and back in, then:
@@ -219,7 +219,7 @@ Release files are built by GitHub Actions from the tagged source, with a
 build provenance attestation. With the [GitHub CLI](https://cli.github.com):
 
 ```sh
-gh attestation verify isle-*-x86_64-linux.tar.gz --repo zickrian/isle
+gh attestation verify isle-*-x86_64-linux.tar.gz --repo rezasetyawan/isle
 ```
 
 `get.sh` checks each download against its `.sha256` already.
@@ -262,7 +262,7 @@ gnome-extensions info isle@zickrian.github.io   # State: ACTIVE (or ENABLED)
 
 If it says `OUT OF DATE`, your GNOME Shell version is outside 46 to 51. If
 it says `ERROR`, that is most likely a bug in Isle: please
-[open an issue](https://github.com/zickrian/isle/issues) with GNOME Shell's
+[open an issue](https://github.com/rezasetyawan/isle/issues) with GNOME Shell's
 log (see **Anything else** below).
 
 **Music does not show.** Check the background service:
@@ -274,5 +274,5 @@ sign-in) and what to run.
 
 **Anything else.** GNOME Shell's log shows extension errors:
 `journalctl -b -o cat /usr/bin/gnome-shell | grep -i isle`. Please
-[open an issue](https://github.com/zickrian/isle/issues) with what it says
+[open an issue](https://github.com/rezasetyawan/isle/issues) with what it says
 and the output of `gnome-shell --version`.

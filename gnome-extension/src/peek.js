@@ -58,12 +58,11 @@ const TONE_COLORS = {
 const css = ([r, g, b], alpha = 1) =>
     `rgba(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)}, ${alpha})`;
 
-/** The badge behind an icon, lit from the top in the alert's colour like iOS's; grey when neutral. */
+/** The badge behind an icon: clean flat background without gradient. */
 function badgeStyle(rgb, neutral) {
-    const [top, bottom] = neutral ? [0.16, 0.08] : [0.34, 0.16];
+    const alpha = neutral ? 0.12 : 0.22;
     const base = neutral ? [1, 1, 1] : rgb;
-    return `background-gradient-direction: vertical; background-gradient-start: ${css(base, top)}; ` +
-        `background-gradient-end: ${css(base, bottom)};`;
+    return `background-color: ${css(base, alpha)};`;
 }
 
 /** An alert's content inside the island: badge, texts, and the buttons that answer. */

@@ -1039,16 +1039,12 @@ export class Controller {
         this._syncTint();
     }
 
-    /** The island's colours for what it shows: the bot's glow, an alert's, or the open page's tint. */
+    /** The island's colours for what it shows: the bot's glow or the open page's tint (alerts keep clean flat black). */
     _syncTint() {
         const expanded = this._presentation === 'expanded';
         const voice = this._presentation === 'voice';
-        // An alert that asks or tells what an agent did glows in its colours, still: drawn once.
-        const glow = this._presentation === 'peek' ? this._alert?.glow : null;
-        const tint = voice ? this._botLook.palette.glow : glow ?? (expanded ? this._expanded.tint : null);
-        const style = voice || glow ? 'aura' : expanded ? this._expanded.tintStyle : null;
-        if (glow && tint !== this._tint)
-            this._island.setTintMotion(ALERT_GLOW_TIME, ALERT_GLOW_LEVEL);
+        const tint = voice ? this._botLook.palette.glow : (expanded ? this._expanded.tint : null);
+        const style = voice ? 'aura' : expanded ? this._expanded.tintStyle : null;
         if (tint !== this._tint || style !== this._tintStyle) {
             this._tint = tint;
             this._tintStyle = style;

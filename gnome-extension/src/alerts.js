@@ -491,7 +491,6 @@ export function agentAsks(request, look, answer) {
         subtitle: request.project ? AGENT_APPS[request.provider] : '',
         code: toolLine(request.tool, request.input),
         tone: 'warn',
-        glow: ASKING_GLOW,
         actions,
         // It waits on the user: it stays until answered, or until the agent stops asking.
         sticky: true,
@@ -510,7 +509,6 @@ export function agentDone(event, look, show) {
         titleLines: 2,
         subtitle: `${[event.project, AGENT_APPS[event.provider]].filter(Boolean).join(' · ')} finished`,
         tone: 'good',
-        glow: DONE_GLOW,
         actions: [
             ...show ? [{label: 'Open terminal', callback: show}] : [],
             {label: 'OK', primary: true, callback: () => {}},
@@ -543,7 +541,6 @@ export function antigravityDone(conv, show) {
         titleLines: 2,
         subtitle: `${[project, 'Antigravity'].filter(Boolean).join(' · ')} · Selesai`,
         tone: 'good',
-        glow: DONE_GLOW,
         action: show ? {label: 'Lihat', callback: show} : undefined,
         onActivate: show,
         duration: STATUS_DURATION + 4000,
@@ -573,7 +570,6 @@ export function antigravityWorking(conv, show) {
         titleLines: 2,
         subtitle: `${[project, 'Antigravity'].filter(Boolean).join(' · ')} · Sedang berjalan...`,
         tone: 'info',
-        glow: [[0.25, 0.55, 1.0], [0.4, 0.75, 1.0], [0.6, 0.9, 1.0]],
         action: show ? {label: 'Lihat', callback: show} : undefined,
         onActivate: show,
         duration: 3500,

@@ -74,11 +74,15 @@ function extractWorkspace(workspaceUris) {
 
 export const AntigravityPage = GObject.registerClass(
 class AntigravityPage extends Page {
-    _init(daemon, watcher, {height}) {
+    _init(daemon, watcher, {height: _height}) {
+        const monitor = Main.layoutManager?.primaryMonitor;
+        const screenHeight = monitor ? monitor.height : 1080;
+        const antigravityHeight = Math.floor(screenHeight / 3);
+
         super._init(daemon, {
             style_class: 'isle-page isle-notifications',
             layout_manager: new Clutter.BoxLayout({orientation: Clutter.Orientation.VERTICAL}),
-            height,
+            height: antigravityHeight,
         });
         this.name = 'antigravity';
         this._watcher = watcher;
@@ -133,21 +137,11 @@ class AntigravityPage extends Page {
         return Boolean(this._watcher?.hasRunning || this._client.isRunning);
     }
 
-    /** Dynamic height: fits natural content up to max 1/3 of the primary monitor height */
+    /** Directly 1/3 of the primary monitor height */
     get preferredHeight() {
         const monitor = Main.layoutManager?.primaryMonitor;
         const screenHeight = monitor ? monitor.height : 1080;
-        const maxAllowed = Math.floor(screenHeight / 3);
-        const scale = uiScale();
-
-        // Calculate height wanted by bar + content + suggestions + input row
-        const barH = 34 * scale;
-        const inputH = 46 * scale;
-        const suggH = this._suggestionBox.visible ? 120 * scale : 0;
-        const [, contentNatH] = this._scrollContent.get_preferred_height(-1);
-        const natural = Math.ceil(barH + inputH + suggH + contentNatH + 16 * scale);
-
-        return Math.max(160 * scale, Math.min(natural, maxAllowed));
+        return Math.floor(screenHeight / 3);
     }
 
     _checkHeightChanged() {
@@ -160,6 +154,7 @@ class AntigravityPage extends Page {
     }
 
     onActivate() {
+        this.emit('height-changed');
         this.emit('request-keyboard', true);
         this._entry.grab_key_focus();
         if (this._stale)
